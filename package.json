@@ -1,0 +1,33 @@
+{
+  "name": "van-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "webpack:start": "webpack serve --config webpack.dev.cjs --open",
+    "webpack:build": "webpack --config webpack.prod.cjs"
+  },
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "compression-webpack-plugin": "^10.0.0",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.2",
+    "webpack": "^5.84.1",
+    "webpack-bundle-analyzer": "^4.8.0",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "rubico": "^1.9.7",
+    "universal-router": "^9.1.0"
+  }
+}
