@@ -9,15 +9,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackProdConfig = {
   overrides: {
     mode: "production",
-    entry: {
-      public: ["./src/entry.js"],
-    },
     output: {
       path: path.join(__dirname, "dist"),
       filename: "[name].[hash].js",
     },
   },
-
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({

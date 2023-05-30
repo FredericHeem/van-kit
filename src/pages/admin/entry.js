@@ -1,8 +1,11 @@
-import "./style.css";
+import "../style.css";
+import van from "../van";
 import { LayoutDefault } from "./layoutDefault";
-
-import { Router } from "./router";
+import { Router } from "../router";
 import { createRoutes } from "./routes";
+
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 const initialScreenFadeOut = () => {
   const loading = document.getElementById("loading");
@@ -17,11 +20,11 @@ const context = {
   van,
   tr: (text) => text,
   theme: { palette: {} },
-  config: { title: "My App", base: "" },
+  config: { title: "My App", base: "/admin" },
 };
 
 Router({
   context,
   routes: createRoutes({ context }),
-  LayoutDefault,
+  LayoutDefault: LayoutDefault(context, { Header, Footer }),
 });

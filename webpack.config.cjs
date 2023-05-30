@@ -19,10 +19,7 @@ module.exports = function (options) {
         historyApiFallback: {
           rewrites: [
             { from: /^\/$/, to: "/index.html" },
-            { from: /^\/user/, to: "/user/index.html" },
             { from: /^\/admin/, to: "/admin/index.html" },
-            { from: /^\/public/, to: "/public/index.html" },
-            { from: /^\/infra/, to: "/infra/index.html" },
           ],
         },
         proxy: {
@@ -31,7 +28,10 @@ module.exports = function (options) {
         host: "0.0.0.0",
         port: 8080,
       },
-      entry: {},
+      entry: {
+        landing: ["./src/pages/landing/entry.js"],
+        admin: ["./src/pages/admin/entry.js"],
+      },
       output: {
         publicPath: "/",
       },
@@ -39,11 +39,17 @@ module.exports = function (options) {
         new HtmlWebpackPlugin({
           template: "src/index.ejs",
           title: pkg.title,
-          chunks: ["public"],
+          chunks: ["landing"],
           description: pkg.description,
           filename: "index.html",
         }),
-
+        new HtmlWebpackPlugin({
+          template: "src/index.ejs",
+          title: pkg.title,
+          chunks: ["admin"],
+          description: pkg.description,
+          filename: "admin/index.html",
+        }),
         new webpack.DefinePlugin({
           __VERSION__: JSON.stringify(pkg.version),
         }),

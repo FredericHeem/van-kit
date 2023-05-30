@@ -6,9 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackDevConfig = {
   overrides: {
     mode: "development",
-    entry: {
-      public: ["./src/entry.js"],
-    },
   },
 
   plugins: [
