@@ -7,7 +7,7 @@ export const Main = (context) => {
       button(
         {
           onclick: () => {
-            history.pushState({}, null, "login");
+            history.pushState({}, null, "/login");
           },
         },
         tr("Login")

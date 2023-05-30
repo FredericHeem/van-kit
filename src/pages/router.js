@@ -1,40 +1,76 @@
-import UniversalRouter from "universal-router";
-import tap from "rubico/tap";
+import { AsyncView } from "./asyncView";
 
-import tryCatch from "rubico/tryCatch";
-import pipe from "rubico/pipe";
-import defaultsDeep from "rubico/x/defaultsDeep";
+const routeFullPath = (route, paths) => ({
+  ...route,
+  paths: [...paths, route.path],
+});
 
-import { NotFound } from "./notFound";
+const flatRoutes = ({ paths = [], routes }) =>
+  routes.flatMap(({ children, ...route }) => {
+    const newRoute = routeFullPath(route, paths);
+    if (children) {
+      return [
+        newRoute,
+        ...flatRoutes({
+          paths: [...paths, route.path],
+          routes: children,
+        }),
+      ];
+    } else return newRoute;
+  });
+
+const buildRegEx = ({ paths }) => {
+  const pattern = paths
+    .map((path) => (path instanceof RegExp ? path.source : path))
+    .map((path) => String.raw`\/${path}`)
+    .join("");
+  return new RegExp(`^${pattern}$`);
+};
+
+const LeanRouter = ({ routes = [], notFoundRoute }) => {
+  const _routes = flatRoutes({ routes }).map((route) => ({
+    ...route,
+    regex: buildRegEx(route),
+  }));
+
+  return {
+    resolve: ({ pathname }) => {
+      const route = _routes.find(({ regex }) => regex.test(pathname));
+      if (route) {
+        return route.action({ match: pathname.match(route.regex) });
+      } else {
+        return notFoundRoute;
+      }
+    },
+  };
+};
 
 export const Router = ({ context, routes, LayoutDefault }) => {
   const { tr, config } = context;
-  const universalRouter = new UniversalRouter(routes);
-
-  const onLocationChange = pipe([
-    tryCatch(
-      pipe([
-        tap(() => {
-          console.log("pathname", location.pathname);
-        }),
-        () =>
-          universalRouter.resolve({
-            pathname: location.pathname.replace(config.base, ""),
-            // query: parse(location.search),
-          }),
-      ]),
-      (error) => ({
-        title: tr("Page Not Found"),
-        component: NotFound(context),
-      })
-    ),
-    defaultsDeep({ Layout: LayoutDefault }),
-    ({ title, component, Layout }) => {
-      const app = document.getElementById("app");
-      app.replaceChildren(Layout({ component }));
-      document.title = `${title} - ${config.title}`;
+  const router = LeanRouter({
+    routes,
+    notFoundRoute: {
+      title: tr("Page Not Found"),
+      component: AsyncView({
+        context,
+        getModule: () => import("./notFound"),
+        Loader: () => "Loading",
+      }),
     },
-  ]);
+  });
+
+  const onLocationChange = () => {
+    const {
+      title,
+      component,
+      Layout = LayoutDefault,
+    } = router.resolve({
+      pathname: location.pathname.replace(config.base, ""),
+    });
+    const app = document.getElementById("app");
+    app.replaceChildren(Layout({ component }));
+    document.title = `${title}`;
+  };
 
   window.addEventListener("popstate", onLocationChange);
   window.history.pushState = new Proxy(window.history.pushState, {
@@ -45,5 +81,5 @@ export const Router = ({ context, routes, LayoutDefault }) => {
   });
 
   onLocationChange();
-  return universalRouter;
+  return router;
 };

@@ -11,7 +11,7 @@ const onsubmit = (formData) => (event) => {
 
 const submitIsDisabled = (formData) => formData.login == "";
 
-export const FormLogin = ({ van, tr }) => {
+export default function ({ van, tr }) {
   const { form, div, p, button, input } = van.tags;
   const formState = van.state({ login: "", password: "" });
 
@@ -43,4 +43,4 @@ export const FormLogin = ({ van, tr }) => {
         )
       )
     );
-};
+}

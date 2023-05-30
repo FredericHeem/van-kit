@@ -50,10 +50,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         template: "src/pages/template.html",
         pages,
         htmlMinify: true,
-        previewRewrites: [
-          // If there's no index.html, you need to manually set rules for history fallback like:
-          { from: /.*/, to: "/index.html" },
-        ],
       }),
       linaria(),
     ],

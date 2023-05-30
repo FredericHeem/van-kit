@@ -1,5 +1,5 @@
 import { Main } from "./main";
-import { FormLogin } from "../formLogin";
+import FormLogin from "../formLogin";
 
 export const createRoutes = ({ context }) => [
   {
