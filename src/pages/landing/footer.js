@@ -1,4 +1,5 @@
-import { css } from "@emotion/css";
+import { css } from "@linaria/core";
+
 import { useQuery } from "../useQuery";
 
 const links = [
