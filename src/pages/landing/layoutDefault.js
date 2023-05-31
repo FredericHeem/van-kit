@@ -1,8 +1,8 @@
-export const LayoutDefault = (context, { Header, Footer }) => {
+export const layoutDefault = (context, { header, footer }) => {
   const { van } = context;
   const { div } = van.tags;
-  return ({ component }) =>
-    div(
+  return function layoutDefault({ component }) {
+    return div(
       {
         style: `
           display: flex; 
@@ -11,8 +11,9 @@ export const LayoutDefault = (context, { Header, Footer }) => {
           flex-direction: column;
         `,
       },
-      Header(context)(),
+      header(context)(),
       div({ style: "flex-grow: 1" }, component()),
-      Footer(context)()
+      footer(context)()
     );
+  };
 };

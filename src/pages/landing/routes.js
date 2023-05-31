@@ -1,5 +1,5 @@
-import { Main } from "./main";
-import { AsyncView } from "../asyncView";
+import { main } from "./main";
+import { asyncView } from "../asyncView";
 
 //import { FormRegister } from "../formRegister";
 
@@ -8,14 +8,14 @@ export const createRoutes = ({ context }) => [
     path: "",
     action: (routerContext) => ({
       title: "Home",
-      component: Main(context),
+      component: main(context),
     }),
   },
   {
     path: "login",
     action: (routerContext) => ({
       title: "Login",
-      component: AsyncView({
+      component: asyncView({
         context,
         getModule: () => import("../formLogin"),
         Loader: () => "Loading",

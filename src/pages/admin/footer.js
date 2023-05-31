@@ -15,7 +15,7 @@ async function fetchJSON(request) {
   }
 }
 
-export const Footer = ({ tr, van }) => {
+export const footer = ({ tr, van }) => {
   const { footer, span, a, ul, li, p } = van.tags;
 
   const op = useQuery({
@@ -26,8 +26,8 @@ export const Footer = ({ tr, van }) => {
     },
   });
 
-  return () =>
-    footer(
+  return function Footer() {
+    return footer(
       {
         class: css`
           display: flex;
@@ -51,4 +51,5 @@ export const Footer = ({ tr, van }) => {
         })
       )
     );
+  };
 };

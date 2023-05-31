@@ -1,4 +1,4 @@
-export const AsyncView = ({ context, getModule, Loader }) => {
+export const asyncView = ({ context, getModule, Loader }) => {
   const { tr, van } = context;
   const { div } = van.tags;
   const loading = van.state(false);
@@ -17,7 +17,7 @@ export const AsyncView = ({ context, getModule, Loader }) => {
     }
   };
 
-  return () => {
+  return function AsyncView() {
     fetchModule();
     return div(
       van.bind(loading, (loading) => (loading ? Loader() : "")),

@@ -1,10 +1,10 @@
 import van from "../../van";
 import { initialScreenFadeOut } from "../../utils/initialScreenFadeOut";
-import { LayoutDefault } from "./layoutDefault";
+import { layoutDefault } from "./layoutDefault";
 import { Router } from "../router";
 import { createRoutes } from "./routes";
-import { Header } from "./header";
-import { Footer } from "./footer";
+import { header } from "./header";
+import { footer } from "./footer";
 import { createTheme } from "../../theme";
 
 initialScreenFadeOut();
@@ -19,5 +19,5 @@ const context = {
 Router({
   context,
   routes: createRoutes({ context }),
-  LayoutDefault: LayoutDefault(context, { Header, Footer }),
+  LayoutDefault: layoutDefault(context, { header, footer }),
 });

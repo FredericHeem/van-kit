@@ -1,10 +1,10 @@
 import { css } from "goober";
 
-export const Footer = ({ tr, van }) => {
+export const footer = ({ tr, van }) => {
   const { footer, span, a, ul, li, p } = van.tags;
 
-  return () =>
-    footer(
+  return function Footer() {
+    return footer(
       {
         class: css`
           display: flex;
@@ -16,4 +16,5 @@ export const Footer = ({ tr, van }) => {
       },
       span(`version FE: ${__VERSION__}`)
     );
+  };
 };
