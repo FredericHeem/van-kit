@@ -1,8 +1,7 @@
-import { defineConfig, normalizePath } from "vite";
+import { defineConfig } from "vite";
 import pkg from "./package.json";
 
 import { createMpaPlugin, createPages } from "vite-plugin-virtual-mpa";
-import linaria from "@linaria/vite";
 
 const base = "/";
 
@@ -51,7 +50,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         pages,
         htmlMinify: true,
       }),
-      linaria(),
     ],
   };
 });

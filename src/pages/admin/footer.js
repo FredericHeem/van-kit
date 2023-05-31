@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import { css } from "goober";
 
 import { useQuery } from "../useQuery";
 

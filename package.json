@@ -16,9 +16,7 @@
     "vite-plugin-virtual-mpa": "^1.8.3"
   },
   "dependencies": {
-    "@linaria/core": "^4.2.10",
-    "@linaria/vite": "^4.2.11",
-    "rubico": "^1.9.7",
-    "universal-router": "^9.1.0"
+    "goober": "^2.1.13",
+    "rubico": "^1.9.7"
   }
 }
