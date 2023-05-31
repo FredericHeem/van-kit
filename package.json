@@ -1,7 +1,6 @@
 {
-  "name": "van-project",
-  "private": true,
-  "description": "Van.js starter kit",
+  "name": "van-kit",
+  "description": "Van.js multi page app starter kit",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
