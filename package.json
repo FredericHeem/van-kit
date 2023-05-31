@@ -10,12 +10,12 @@
     "bundle-visualizer": "vite-bundle-visualizer"
   },
   "devDependencies": {
-    "vite": "^4.3.2",
-    "vite-bundle-visualizer": "^0.7.0",
-    "vite-plugin-virtual-mpa": "^1.8.3"
+    "vite": "4.3.2",
+    "vite-bundle-visualizer": "0.7.0",
+    "vite-plugin-virtual-mpa": "1.8.3"
   },
   "dependencies": {
-    "goober": "^2.1.13",
-    "rubico": "^1.9.7"
+    "goober": "2.1.13",
+    "rubico": "1.9.7"
   }
 }
