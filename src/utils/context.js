@@ -1,5 +1,5 @@
 import van from "../van";
-import { createTheme } from "../theme";
+import { createTheme } from "./theme";
 
 export function createContext(extra = {}) {
   return {
