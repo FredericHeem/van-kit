@@ -1,22 +1,22 @@
-import Input from "./input";
+import input from "./input";
 
 export default (context) => {
   const { tr, van } = context;
   const { div, h3, h2 } = van.tags;
-  const input = Input(context);
+  const Input = input(context);
   return () =>
     div(
       h2(tr("Input Examples")),
       h3("Standard"),
-      div(input({ id: "my-input", label: "my input" })),
+      div(Input({ id: "my-Input", label: "my Input" })),
       h3("Disabled"),
       div(
-        input({
+        Input({
           id: "my-input-disabled",
-          label: "my input disabled",
+          label: "my Input disabled",
           disabled: true,
         }),
-        input({
+        Input({
           id: "my-input-disabled-value",
           label: "my input disabled",
           disabled: true,

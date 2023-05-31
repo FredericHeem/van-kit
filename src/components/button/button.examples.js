@@ -1,56 +1,56 @@
-import Button from "./button";
+import button from "./button";
 
 export default (context) => {
   const { tr, van } = context;
   const { div, p, h2, h3 } = van.tags;
-  const button = Button(context);
+  const Button = button(context);
   return () =>
     div(
       h2(tr("Button Examples")),
       h3("Flat"),
       p(
-        button({
+        Button({
           label: tr("FLAT"),
         }),
-        button({
+        Button({
           primary: true,
           label: tr("FLAT PRIMARY"),
         }),
-        button({
+        Button({
           accent: true,
           label: tr("FLAT ACCENT"),
         }),
-        button({
+        Button({
           ripple: true,
           label: tr("RIPPLE FLAT"),
         }),
-        button({
+        Button({
           disabled: true,
           label: tr("DISABLED"),
         })
       ),
       h3("Raised"),
       p(
-        button({
+        Button({
           label: tr("FLAT"),
           raised: true,
         }),
-        button({
+        Button({
           primary: true,
           raised: true,
           label: tr("FLAT PRIMARY"),
         }),
-        button({
+        Button({
           accent: true,
           raised: true,
           label: tr("FLAT ACCENT"),
         }),
-        button({
+        Button({
           ripple: true,
           raised: true,
           label: tr("RIPPLE FLAT"),
         }),
-        button({
+        Button({
           disabled: true,
           raised: true,
           label: tr("DISABLED"),

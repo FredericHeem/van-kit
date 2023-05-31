@@ -126,7 +126,7 @@ export default function (context, options = {}) {
     `,
   };
 
-  return (props, children) => {
+  return function Button(props, children) {
     const {
       fullWidth,
       label,

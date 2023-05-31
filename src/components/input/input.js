@@ -71,7 +71,7 @@ export default function (context, options = {}) {
     `,
   };
 
-  return (props) => {
+  return function Input(props) {
     const {
       name,
       id,
