@@ -50,10 +50,12 @@ let toDom = (v) => (v.nodeType ? v : new Text(v));
 let add = (dom, ...children) => (
   children
     .flat(Infinity)
-    .forEach((child) =>
-      dom.appendChild(
-        protoOf(child) === stateProto ? bind(child, (v) => v) : toDom(child)
-      )
+    .forEach(
+      (child) =>
+        child &&
+        dom.appendChild(
+          protoOf(child) === stateProto ? bind(child, (v) => v) : toDom(child)
+        )
     ),
   dom
 );
