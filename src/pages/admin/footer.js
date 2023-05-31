@@ -1,6 +1,6 @@
 import { css } from "goober";
 
-import { useQuery } from "../useQuery";
+import { useQuery } from "../../utils/useQuery";
 
 async function fetchJSON(request) {
   try {

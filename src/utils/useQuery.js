@@ -3,10 +3,10 @@ export const useQuery = ({ van, run }) => {
   const data = van.state();
   const error = van.state();
 
-  const runAction = async () => {
+  const runAction = async (...args) => {
     try {
       isLoading.val = true;
-      const result = await run();
+      const result = await run(...args);
       data.val = result;
     } catch (e) {
       error.val = e;
@@ -14,6 +14,7 @@ export const useQuery = ({ van, run }) => {
       isLoading.val = false;
     }
   };
+  // TODO
   runAction();
-  return { isLoading, data, error };
+  return { isLoading, data, error, runAction };
 };

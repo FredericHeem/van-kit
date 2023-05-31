@@ -126,7 +126,7 @@ export default function (context, options = {}) {
     `,
   };
 
-  return function Button(props, children) {
+  return function Button(props, ...children) {
     const {
       fullWidth,
       label,
@@ -139,7 +139,6 @@ export default function (context, options = {}) {
       icon,
       ...otherProps
     } = props;
-
     const tagButton = href ? van.tags.a : van.tags.button;
     return tagButton(
       {
@@ -156,9 +155,9 @@ export default function (context, options = {}) {
         ...(!href && { type: "button" }),
         ...otherProps,
       },
-      label ? span({ class: styles.label }, label) : "",
-      icon ? span({ class: styles.icon }, icon) : ""
-      //children
+      label && span({ class: styles.label }, label),
+      icon && span({ class: styles.icon }, icon),
+      children
     );
   };
 }

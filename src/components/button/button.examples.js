@@ -2,16 +2,14 @@ import button from "./button";
 
 export default (context) => {
   const { tr, van } = context;
-  const { div, p, h2, h3 } = van.tags;
+  const { section, p, h2, h3 } = van.tags;
   const Button = button(context);
   return () =>
-    div(
+    section(
       h2(tr("Button Examples")),
       h3("Flat"),
       p(
-        Button({
-          label: tr("FLAT"),
-        }),
+        Button({}, "Do stuff"),
         Button({
           primary: true,
           label: tr("FLAT PRIMARY"),
@@ -29,6 +27,28 @@ export default (context) => {
           label: tr("DISABLED"),
         })
       ),
+      h3("Primary"),
+      p(
+        Button({
+          label: tr("primary"),
+          primary: true,
+        }),
+        Button({
+          primary: true,
+          raised: true,
+          label: tr("primary Raised"),
+        }),
+        Button({
+          ripple: true,
+          raised: true,
+          label: tr("primary ripple"),
+        }),
+        Button({
+          disabled: true,
+          raised: true,
+          label: tr("primary DISABLED"),
+        })
+      ),
       h3("Raised"),
       p(
         Button({
@@ -38,23 +58,36 @@ export default (context) => {
         Button({
           primary: true,
           raised: true,
-          label: tr("FLAT PRIMARY"),
+          label: tr("Raised PRIMARY"),
         }),
         Button({
           accent: true,
           raised: true,
-          label: tr("FLAT ACCENT"),
+          label: tr("Raised ACCENT"),
         }),
         Button({
           ripple: true,
           raised: true,
-          label: tr("RIPPLE FLAT"),
+          label: tr("Raised FLAT"),
         }),
         Button({
           disabled: true,
           raised: true,
-          label: tr("DISABLED"),
+          label: tr("Raised DISABLED"),
         })
+      ),
+      h3("Full With"),
+      p(
+        Button({
+          fullWidth: true,
+          label: tr("FLAT"),
+          raised: true,
+        }),
+        Button({
+          fullWidth: true,
+          primary: true,
+          label: tr("Raised PRIMARY"),
+        }),
       )
     );
 };

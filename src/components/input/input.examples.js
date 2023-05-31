@@ -2,10 +2,10 @@ import input from "./input";
 
 export default (context) => {
   const { tr, van } = context;
-  const { div, h3, h2 } = van.tags;
+  const { section, div, h3, h2 } = van.tags;
   const Input = input(context);
   return () =>
-    div(
+    section(
       h2(tr("Input Examples")),
       h3("Standard"),
       div(Input({ id: "my-Input", label: "my Input" })),

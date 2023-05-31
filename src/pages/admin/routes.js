@@ -11,7 +11,7 @@ export const createRoutes = ({ context }) => [
     }),
   },
   {
-    path: "/login",
+    path: "login",
     action: (routerContext) => ({
       routerContext,
       title: "Admin Login",
