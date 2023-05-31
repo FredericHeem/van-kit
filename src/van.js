@@ -3,7 +3,7 @@
 // Aliasing some builtin symbols to reduce the bundle size.
 let Obj = Object,
   _undefined,
-  protoOf = Object.getPrototypeOf;
+  protoOf = (v) => (v ? Object.getPrototypeOf(v) : undefined);
 
 let addAndScheduleOnFirst = (set, s, func, waitMs) =>
   (set ?? (setTimeout(func, waitMs), new Set())).add(s);
@@ -68,7 +68,8 @@ let tags = new Proxy(
         dom[k] !== _undefined
           ? (v) => (dom[k] = v)
           : (v) => dom.setAttribute(k, v);
-      if (protoOf(v) === stateProto) bind(v, (v) => (setter(v), dom));
+      if (v == undefined) {
+      } else if (protoOf(v) === stateProto) bind(v, (v) => (setter(v), dom));
       else if (protoOf(v) === objProto)
         bind(...v["deps"], (...deps) => (setter(v["f"](...deps)), dom));
       else setter(v);

@@ -1,4 +1,4 @@
-import van from "../van";
+import van from "../../van";
 import { LayoutDefault } from "./layoutDefault";
 import { Router } from "../router";
 import { createRoutes } from "./routes";

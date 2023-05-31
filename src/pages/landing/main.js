@@ -1,20 +1,18 @@
-import { Input } from "../../components/input/input";
+import ButtonExamples from "../../components/button/button.examples";
+import InputExamples from "../../components/input/input.examples";
 
 export const Main = (context) => {
   const { tr, van } = context;
-  const { main, h1, button } = van.tags;
-  const input = Input(context);
+  const { div, main, h1 } = van.tags;
+
+  const buttonExamples = ButtonExamples(context);
+  const inputExamples = InputExamples(context);
+
   return () =>
     main(
-      h1(tr("Main Area")),
-      button(
-        {
-          onclick: () => {
-            history.pushState({}, null, "/login");
-          },
-        },
-        tr("Login")
-      ),
-      input({ label: "my input" })
+      h1(tr("Examples")),
+      buttonExamples(),
+      //
+      inputExamples()
     );
 };
