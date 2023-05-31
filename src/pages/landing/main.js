@@ -8,7 +8,7 @@ export const main = (context) => {
   const ButtonExamples = buttonExamples(context);
   const InputExamples = inputExamples(context);
 
-  return function () {
+  return function Main() {
     return main(
       h1(tr("Examples")),
       ButtonExamples(),

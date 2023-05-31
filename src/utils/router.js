@@ -1,4 +1,4 @@
-import { asyncView } from "./asyncView";
+import { asyncView } from "../pages/asyncView";
 
 const routeFullPath = (route, paths) => ({
   ...route,
@@ -53,7 +53,7 @@ export const Router = ({ context, routes, LayoutDefault }) => {
       title: tr("Page Not Found"),
       component: asyncView({
         context,
-        getModule: () => import("./notFound"),
+        getModule: () => import("../pages/notFound"),
         Loader: () => "Loading",
       }),
     },
