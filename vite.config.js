@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import pkg from "./package.json";
+import path from "path";
 
 import { createMpaPlugin, createPages } from "vite-plugin-virtual-mpa";
 
@@ -24,11 +25,21 @@ const pages = createPages([
       description: "Admin Area",
     },
   },
+  {
+    name: "storybook",
+    filename: "storybook.html",
+    entry: "/src/pages/storybook/entry.js",
+    data: {
+      title: "Story Book",
+      description: "Story Book",
+    },
+  },
 ]);
 
 export default defineConfig(({ command, mode, ssrBuild }) => {
   return {
     base,
+    build: { modulePreload: { polyfill: false } },
     server: {
       open: true,
       proxy: {
@@ -51,5 +62,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         htmlMinify: true,
       }),
     ],
+    resolve: {
+      alias: { "@": path.resolve(__dirname, "src") },
+    },
   };
 });

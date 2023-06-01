@@ -1,19 +1,11 @@
-import buttonExamples from "../../components/button/button.examples";
-import inputExamples from "../../components/input/input.examples";
-
 export const main = (context) => {
   const { tr, van } = context;
-  const { div, main, h1 } = van.tags;
-
-  const ButtonExamples = buttonExamples(context);
-  const InputExamples = inputExamples(context);
+  const { div, p, main, h1 } = van.tags;
 
   return function Main() {
     return main(
-      h1(tr("Examples")),
-      ButtonExamples(),
-      //
-      InputExamples()
+      h1(tr("Van Kit Landing Page ")),
+      p("This is an example of a minimal site ")
     );
   };
 };

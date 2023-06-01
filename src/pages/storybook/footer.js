@@ -14,7 +14,7 @@ export const footer = ({ tr, van }) => {
           }
         `,
       },
-      span(`version: ${__VERSION__}`)
+      span(`version FE: ${__VERSION__}`)
     );
   };
 };
