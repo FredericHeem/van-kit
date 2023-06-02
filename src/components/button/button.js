@@ -1,5 +1,7 @@
 import { css } from "goober";
 
+import { classNames } from "../../utils/classNames";
+
 export default function (context, options = {}) {
   const { theme, van } = context;
   const { palette, shape, shadows } = theme;
@@ -142,15 +144,18 @@ export default function (context, options = {}) {
     const tagButton = href ? van.tags.a : van.tags.button;
     return tagButton(
       {
-        class: `${styles.root} ${href ? styles.a : styles.button} ${
-          raised ? styles.raised : styles.flat
-        } ${!raised && primary && styles.flatPrimary} ${
-          !raised && accent && styles.flatAccent
-        } ${raised && primary && styles.raisedPrimary} ${
-          raised && accent && styles.raisedAccent
-        } ${ripple && styles.ripple} ${disabled && styles.disabled} ${
-          disabled && raised && styles.raisedDisabled
-        } ${fullWidth && styles.fullWidth}`,
+        class: classNames(
+          styles.root,
+          href ? styles.a : styles.button,
+          raised ? styles.raised : styles.flat,
+          !raised && primary && styles.flatPrimary,
+          !raised && accent && styles.flatAccent,
+          raised && primary && styles.raisedPrimary,
+          raised && accent && styles.raisedAccent,
+          ripple && styles.rippledisabled && styles.disabled,
+          disabled && raised && styles.raisedDisabled,
+          fullWidth && styles.fullWidth
+        ),
         href,
         ...(!href && { type: "button" }),
         ...otherProps,

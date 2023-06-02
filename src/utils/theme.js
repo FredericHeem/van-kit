@@ -32,26 +32,26 @@ export const createTheme = () => ({
     },
     error: {
       main: "#d32f2f",
-      light: "#ef5350",
+      light: "#ffebee",
       dark: "#c62828",
       contrastText: "#fff",
     },
     warning: {
       main: "#ed6c02",
-      light: "#ff9800",
-      dark: "#e65100",
+      light: "#fff3e0",
+      dark: "#f57c00",
       contrastText: "#fff",
     },
     info: {
       main: "#0288d1",
-      light: "#03a9f4",
-      dark: "#01579b",
+      light: "#e3f2fd",
+      dark: "#1976d2",
       contrastText: "#fff",
     },
     success: {
       main: "#2e7d32",
-      light: "#4caf50",
-      dark: "#1b5e20",
+      light: "#e0f2f1",
+      dark: "#00796b",
       contrastText: "#fff",
     },
     grey: {

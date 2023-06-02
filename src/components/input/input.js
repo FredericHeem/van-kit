@@ -1,4 +1,5 @@
 import { css } from "goober";
+import { classNames } from "../../utils/classNames";
 
 export default function (context, options = {}) {
   const { theme, van } = context;
@@ -34,7 +35,6 @@ export default function (context, options = {}) {
           color: ${palette.primary.main};
         }
       }
-
       label {
         display: block;
         top: 1.5rem;
@@ -82,9 +82,11 @@ export default function (context, options = {}) {
     } = props;
     return div(
       {
-        class: `${style.base} ${disabled ? style.disabled : ""} ${
+        class: classNames(
+          style.base,
+          disabled ? style.disabled : "",
           error ? style.error : ""
-        }`,
+        ),
       },
       input({
         id,
