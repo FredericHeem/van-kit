@@ -42,17 +42,6 @@ export default (context, { limit = 10, deleteAfterDuration = 5e3 } = {}) => {
     `,
   };
 
-  const domRoot = div(
-    {
-      class: styles.stack,
-    },
-    "AlertStack"
-  );
-
-  function AlertStack(props, ...children) {
-    return domRoot;
-  }
-
   const AlertItem = (message) => {
     const domItem = div(
       {
@@ -64,6 +53,24 @@ export default (context, { limit = 10, deleteAfterDuration = 5e3 } = {}) => {
     );
     return domItem;
   };
+
+  const domRoot = div(
+    {
+      class: styles.stack,
+    },
+    "AlertStack",
+    van.bind(messagesState, (messages, dom, oldMessages) => {
+      if (dom) {
+        debugger;
+        return dom;
+      }
+      return div(messages.map(AlertItem));
+    })
+  );
+
+  function AlertStack(props, ...children) {
+    return domRoot;
+  }
 
   AlertStack.add = ({ component }) => {
     const message = {
@@ -78,7 +85,7 @@ export default (context, { limit = 10, deleteAfterDuration = 5e3 } = {}) => {
 
     messagesState.val = [...messagesState.val, message];
 
-    domRoot.appendChild(AlertItem(message));
+    //domRoot.appendChild(AlertItem(message));
 
     setTimeout(() => AlertStack.remove(message), deleteAfterDuration);
   };
@@ -94,15 +101,15 @@ export default (context, { limit = 10, deleteAfterDuration = 5e3 } = {}) => {
     setStatus({ id, status: "removing" });
     const item = document.querySelector(`[data-id=${id}]`);
     item?.remove();
-    //const idx = messagesState.val.findIndex((message) => message.id === id);
-    // if (idx != -1) {
-    //   // setTimeout(
-    //   //   () => (messagesState.val = messagesState.val.toSpliced(idx, 1)),
-    //   //   500
-    //   // );
-    // } else {
-    //   // console.log("remove: no id", id);
-    // }
+    const idx = messagesState.val.findIndex((message) => message.id === id);
+    if (idx != -1) {
+      // setTimeout(
+      //   () => (messagesState.val = messagesState.val.toSpliced(idx, 1)),
+      //   500
+      // );
+    } else {
+      // console.log("remove: no id", id);
+    }
   };
 
   return AlertStack;

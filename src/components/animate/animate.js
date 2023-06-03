@@ -18,8 +18,15 @@ export default function (context, options = {}) {
             if (removedNode === node) {
               const nodeCloned = node.cloneNode(true);
               nodeCloned.style.animation = animationHide;
-              record.previousSibling?.after(nodeCloned);
-              record.nextSibling?.before(nodeCloned);
+              if (record.previousSibling) {
+                record.previousSibling.after(nodeCloned);
+              } else if (record.nextSibling) {
+                record.nextSibling.before(nodeCloned);
+              } else if (record.target) {
+                record.target.appendChild(nodeCloned);
+              } else {
+              }
+
               nodeCloned.addEventListener("animationend", () =>
                 nodeCloned.parentNode.removeChild(nodeCloned)
               );

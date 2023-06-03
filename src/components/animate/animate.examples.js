@@ -21,15 +21,17 @@ export default (context) => {
             van.bind(showState, (show) => (show ? "Hide" : "Show"))
           )
         ),
-        van.bind(showState, (show) =>
-          show
-            ? Animate({
-                parent: dom,
-                Component: () => div("Ciao"),
-                animationHide: "hide-right 0.5s",
-                animationShow: "show-right 0.5s",
-              })
-            : ""
+        div(
+          van.bind(showState, (show) =>
+            show
+              ? Animate({
+                  parent: dom,
+                  Component: () => div("Ciao"),
+                  animationHide: "hide-right 0.5s",
+                  animationShow: "show-right 0.5s",
+                })
+              : ""
+          )
         )
       )
     );
