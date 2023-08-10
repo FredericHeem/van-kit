@@ -40,15 +40,15 @@ export const footer = ({ tr, van }) => {
       span(`version FE: ${__VERSION__}`),
       span(
         `BE: `,
-        van.bind(op.isLoading, op.data, op.error, (isLoading, data, error) => {
-          if (isLoading) {
+        () => {
+          if (op.isLoading.val) {
             return "Loading";
-          } else if (error) {
+          } else if (op.error.val) {
             return "Error";
           } else {
-            return data;
+            return op.data.val;
           }
-        })
+        }
       )
     );
   };

@@ -32,15 +32,14 @@ export default function ({ van, tr }) {
           oninput: oninput(formState),
         })
       ),
-      van.bind(formState, (formData) =>
+      () =>
         button(
           {
             type: "submit",
-            disabled: submitIsDisabled(formData),
-            onclick: onsubmit(formData),
+            disabled: submitIsDisabled(formState.val),
+            onclick: onsubmit(formState.val),
           },
           tr("Submit")
         )
-      )
     );
 }

@@ -18,12 +18,12 @@ export default (context) => {
                 showState.val = !showState.val;
               },
             },
-            van.bind(showState, (show) => (show ? "Hide" : "Show"))
+            () => (showState.val ? "Hide" : "Show")
           )
         ),
         div(
-          van.bind(showState, (show) =>
-            show
+          () =>
+            showState.val
               ? Animate({
                   parent: dom,
                   Component: () => div("Ciao"),
@@ -31,7 +31,6 @@ export default (context) => {
                   animationShow: "show-right 0.5s",
                 })
               : ""
-          )
         )
       )
     );
