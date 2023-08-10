@@ -1,4 +1,4 @@
-import van from "../van";
+import van from "vanjs-core";
 import { createTheme } from "./theme";
 
 export function createContext(extra = {}) {

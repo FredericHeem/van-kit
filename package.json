@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "goober": "2.1.13",
-    "rubico": "1.9.7"
+    "rubico": "1.9.7",
+    "vanjs-core": "1.0.1"
   }
 }

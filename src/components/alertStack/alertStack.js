@@ -59,13 +59,13 @@ export default (context, { limit = 10, deleteAfterDuration = 5e3 } = {}) => {
       class: styles.stack,
     },
     "AlertStack",
-    van.bind(messagesState, (messages, dom, oldMessages) => {
+    (dom) => {
       if (dom) {
         debugger;
         return dom;
       }
-      return div(messages.map(AlertItem));
-    })
+      return div(messagesState.val.map(AlertItem));
+    }
   );
 
   function AlertStack(props, ...children) {

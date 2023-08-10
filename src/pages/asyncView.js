@@ -20,9 +20,9 @@ export const asyncView = ({ context, getModule, Loader }) => {
   return function AsyncView() {
     fetchModule();
     return div(
-      van.bind(loading, (loading) => (loading ? Loader() : "")),
+      () => (loading.val ? Loader() : ""),
       error,
-      van.bind(view, (view) => (view ? view() : ""))
+      () => (view.val ? view.val() : "")
     );
   };
 };
