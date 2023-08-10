@@ -41,7 +41,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     base,
     build: { modulePreload: { polyfill: false } },
     server: {
-      open: true,
       proxy: {
         "/api/v1/": {
           target: "http://localhost:9000",
