@@ -12,9 +12,9 @@ Centralized theming for your components, the theme object provides information a
 
 For most of the project, a website comes in 3 different forms:
 
-- a landing page for unauthentated user.
-- an application for the authenciated user.
-- an application for the adminitrator and support people
+- a landing page for unauthenticated user.
+- an application for the authenticated user.
+- an application for the administrator and support people
 
 Instead of creating 3 different repositories, multi page apps allows to use one repository, hence sharing code is as easy as it can get, no more duplications of components, vite configs, themings and so on.
 
